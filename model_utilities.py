@@ -35,10 +35,7 @@ def loadModel(modelName):
 
 	#load weights
 	model.load_weights(modelH5)
-
-	# for layer in model.layers:
-	# 	layer.trainable = True
-
+	
 	for layer in model.layers[:-freeze_layers]:
 		layer.trainable = False
 	for layer in model.layers[-freeze_layers:]:
@@ -60,19 +57,11 @@ def saveHistory(f1, val_f1, modelName, epoch, jumps):
 	plt.savefig("./plots/{}/{}.png".format(modelName, epoch))
 	plt.clf()
 def createModel():
-
-	# return MyModel()
 	input_shape = (299, 299, 3)
 
 	tf_input = Input(shape=input_shape)
-	# base_model = ResNet50(include_top=False, weights="imagenet", input_tensor=tf_input, pooling="max")
 	base_model = Xception(include_top=False, weights="imagenet", input_tensor=tf_input, pooling="max")
-	# base_model = InceptionResNetV2(include_top=False, weights=None, input_tensor=tf_input, pooling="max")
-	# base_model = InceptionV3(include_top=False, weights="imagenet", input_tensor=tf_input, pooling="max")
-	# for layer in base_model.layers:
-	# 	layer.trainable = False
 	top = base_model.output
-	# top = Dense(2048, activation="relu")(top)
 	top = Dense(128, activation="softmax")(top)
 	model = Model(inputs=base_model.input, outputs=top)
 	

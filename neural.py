@@ -67,7 +67,6 @@ def save(p):
 		pickle.dump(p, output_pickle)
 
 def cropCenter(image):
-	# print("IMage", image.shape)
 	imgY, imgX, imgC = image.shape
 	minShape = min(imgX, imgY)
 	startX = imgX // 2 - minShape // 2
@@ -76,22 +75,7 @@ def cropCenter(image):
 	return image[startY:startY+minShape, startX:startX+minShape]
 
 def getRandomClass(dirF):
-	# To handle unbalance in predictions
-	# if(random.random() <=.10):
-	# 	return 63
-	# elif(random.random() <=.10):
-	# 	return 70
-	# elif(random.random() <=.10):
-	# 	return 8
-	# else:
 	return int(random.choice(dirF))
-		# return 63
-		# return 87
-		# return 15
-		# return 4
-		# return 66
-		# return 70
-		# return 8
 
 def createBatch(batchSize, folder, aug):
 	x = np.zeros((batchSize, 299, 299, 3))
@@ -114,7 +98,7 @@ def createBatch(batchSize, folder, aug):
 		x = seq.augment_images(x)
 	return x, y
 	
-def main():
+def trainModel():
 	if(len(sys.argv) != 2):
 		print("argv[1] can't be None")
 		exit()
@@ -133,13 +117,9 @@ def main():
 	modelP["epochs"] += modelP["jumps"]
 	save(modelP)
 
-	# return history.history["categorical_accuracy"], history.history["val_categorical_accuracy"]
-
 def Run():
-	f1Arr = []
-	valF1Arr = []
-	for i in range(3):
-		main()
+	for _ in range(3):
+		trainModel()
 		
 if __name__ == '__main__':
 	Run()

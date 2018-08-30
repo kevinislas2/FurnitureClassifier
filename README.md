@@ -3,7 +3,7 @@ Furniture Image Classifier using Keras (iMaterialist Challenge)
 
 The following project was developed for the [iMaterialist Challenge (Furniture) at FGVC5](https://www.kaggle.com/c/imaterialist-challenge-furniture-2018), which consisted in developing a model to classify images into 128 different classes, the training dataset consisted of 194,828 images, the validation dataset consisted of 6,400 images and the testing dataset consisted of 12,800 images.
 
-This project served me as a way to practice Deep Learning applied to image recognition, the model developed achieved a 32.86% error and scored 251/436 participants.
+This project served me as a way to practice Deep Learning applied to image recognition, the model developed achieved a 32.86% error and scored 251th place out of 436 participants.
 
 ## About the model
 I experimented using different model architectures and training strategies, due to time and hardware constraints the best performance/training_time results that I could obtain were using a Xception model with imagenet pre-trained weights, I retrained the last 80 layers of the model to get better results. 

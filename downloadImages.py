@@ -29,7 +29,7 @@ def downloadImage(img):
 		try:
 			global http
 			response = http.request("GET", img["url"][0])
-			# urllib.request.urlretrieve(img["url"][0], "./images/{}/{}/{}.jpg".format(file, img["label_id"], img["image_id"]))
+
 			image_data = response.data
 			pil_image = Image.open(BytesIO(image_data))
 			pil_image_rgb = pil_image.convert('RGB')

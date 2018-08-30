@@ -71,3 +71,4 @@ Since there is a very large number of images, each cycle takes 2048 random image
 
 * Set up ```install_requires``` to facilitate instalation of prequisites.
 * Make the process of using different model architechtures easier, right now this is only available through editing the source code.
+
